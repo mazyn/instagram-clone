@@ -32,9 +32,9 @@ class Post extends Component {
       'https://lh3.googleusercontent.com/qqN6N2__UHNS9bnobC0VvTnAsSZkRb6eswYAVIzgCrVrfeJ9_t6coaDgGgl2rWyJkhhA51ztznejPF4PEQ_ouRgO';
     const imageUri = `${imageSelection}=s${imageHeight}-c`;
 
-    const heartIconSource = this.state.liked ?
-      config.images.redHeartIcon :
-      config.images.heartIcon;
+    const heartIconSource = this.state.liked
+      ? config.icons.heartRed
+      : config.icons.heartOutline;
 
     return (
       <View>
@@ -46,12 +46,20 @@ class Post extends Component {
                 uri: 'https://lh3.googleusercontent.com/Qbe0bB3klBASLhl1qy6OdiSwYCf75vcPwQ4-gP8YfJihpbTi99AzIVLtY1s5KL5Si-OfiFCPSP5_9Hvq_pxA35WoMQ'
               }}
             />
-            <Text style={{ marginLeft: 10, fontWeight: 'bold' }}>
+            <Text style={{ marginLeft: 10, fontWeight: 'bold', fontSize: 13 }}>
               {"ahribabyv_   "}
             </Text>
           </View>
-          <View>
-            <Text style={{ fontSize: 28 }}>...</Text>
+          <View style={{ left: 3, top: 14 }}>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: 'bold',
+                transform: [{ rotate: '90deg' }]
+              }}
+            >
+              {"... "}
+            </Text>
           </View>
         </View>
         <TouchableOpacity
@@ -111,9 +119,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   userPic: {
-    width: 40,
-    height: 40,
-    borderRadius: 20
+    width: 28,
+    height: 28,
+    borderRadius: 14
   },
   iconBar: {
     height: config.styleConstants.rowHeight,
@@ -129,8 +137,6 @@ const styles = StyleSheet.create({
   likesBar: {
     width: '100%',
     height: config.styleConstants.rowHeight,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgb(233, 233, 233)',
     paddingLeft: 20
   }
 });
