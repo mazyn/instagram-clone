@@ -10,33 +10,45 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: styleConstants.inputBorderColor,
-    borderRadius: 6,
-    marginTop: 25,
     backgroundColor: styleConstants.inputBgColor,
+    borderColor: styleConstants.inputBorderColor,
+    borderRadius: 4,
+    marginTop: 20,
     paddingLeft: 16,
     minWidth: '100%',
-    height: 58,
+    height: styleConstants.rowHeight,
   },
   button: {
     minWidth: '100%',
-    height: 58,
+    height: styleConstants.rowHeight,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 25,
+    marginTop: 20,
     backgroundColor: styleConstants.primaryButtonColor,
-    borderRadius: 6,
+    borderRadius: 4,
   },
   buttonText: {
     color: '#FFFFFF',
     fontWeight: 'bold'
   },
   helpSigningIn: {
-    marginTop: 30,
+    marginTop: 20,
     flexWrap: 'wrap',
     flexDirection: 'row',
     justifyContent: 'center'
   },
+  footer: {
+    flexDirection: 'row',
+    height: styleConstants.rowHeight,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderTopWidth: StyleSheet.hairlineWidth,
+    width: '100%',
+    position: 'absolute',
+    bottom: 0,
+    borderColor: styleConstants.inputBorderColor,
+    backgroundColor: styleConstants.inputBgColor
+  }
 });
 
 class Login extends Component {
@@ -56,7 +68,8 @@ class Login extends Component {
           alignItems: 'center'
         }}
       >
-        <Image source={images.wordMark}
+        <Image
+          source={images.wordMark}
           style={{
             height: 80,
             width: '50%'
@@ -79,6 +92,7 @@ class Login extends Component {
           />
           <TouchableOpacity
             style={styles.button}
+            onPress={this.login()}
           >
             <Text style={styles.buttonText}>{"Log In "}</Text>
           </TouchableOpacity>
@@ -88,7 +102,7 @@ class Login extends Component {
               <Text style={{ color: styleConstants.primaryLinkColor, fontWeight: 'bold' }}>Get help signing in.</Text>
             </TouchableOpacity>
           </View>
-          <View style={{ marginTop: 35, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+          <View style={{ marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
             <View
               style={{
                 borderBottomColor: styleConstants.inputBorderColor,
@@ -97,9 +111,7 @@ class Login extends Component {
                 flex: 1
               }}
             />
-            <View style={{
-              marginHorizontal: 12
-            }}>
+            <View style={{ marginHorizontal: 12 }}>
               <Text style={{ color: styleConstants.textDarkGrayColor, fontWeight: 'bold', fontSize: 16 }}>{"OR "}</Text>
             </View>
             <View
@@ -113,13 +125,15 @@ class Login extends Component {
           </View>
           <View>
             <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', height: styleConstants.rowHeight }}>
-              <View style={{
-                width: 16,
-                height: 16,
-                marginRight: 10,
-                overflow: 'hidden',
-                borderRadius: 3,
-              }}>
+              <View
+                style={{
+                  width: 16,
+                  height: 16,
+                  marginRight: 10,
+                  overflow: 'hidden',
+                  borderRadius: 2,
+                }}
+              >
                 <Image
                   source={images.sprite}
                   resizeMode="cover"
@@ -131,6 +145,13 @@ class Login extends Component {
               </Text>
             </TouchableOpacity>
           </View>
+        </View>
+        {/* <View style={{ flex: 1 }} /> */}
+        <View style={styles.footer}>
+          <Text style={{ color: styleConstants.textDarkGrayColor }}>Don't have an account?</Text>
+          <TouchableOpacity style={{ marginLeft: 5 }}>
+            <Text style={{ color: styleConstants.primaryLinkColor, fontWeight: 'bold' }}>{"Sign up. "}</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );

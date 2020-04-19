@@ -12,7 +12,7 @@ import {
 import { PostFeed } from '../container';
 import config from '../../config';
 
-const { icons, images } = config;
+const { icons, images, styleConstants } = config;
 
 class MainFeed extends Component {
 
@@ -30,9 +30,24 @@ class MainFeed extends Component {
           <Image source={images.wordMark} style={{ width: 90, height: 32, top: 3 }} />
           <View style={{ flexGrow: 1 }} />
           <TouchableWithoutFeedback onPress={() => navigation.navigate('Direct')}>
-            <View style={{ marginRight: 14 }}>
-              <Image source={icons.paperPlane} style={{ width: 20, height: 20 }} />
+            <View
+              style={{
+                width: 16,
+                height: 16,
+                marginRight: 10,
+                overflow: 'hidden',
+                borderRadius: 2,
+              }}
+            >
+              <Image
+                source={images.sprite}
+                resizeMode="cover"
+                style={styleConstants.coreSpriteFacebookIcon}
+              />
             </View>
+            {/* <View style={{ marginRight: 14 }}>
+              <Image source={icons.paperPlane} style={{ width: 20, height: 20 }} />
+            </View> */}
           </TouchableWithoutFeedback>
         </View>
         <PostFeed />
